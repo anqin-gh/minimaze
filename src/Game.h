@@ -20,6 +20,6 @@ private:
 	Scene*		m_scene;
 };
 
-#endif // GAME_H
-
 } // minimaze
+
+#endif // GAME_H
