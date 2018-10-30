@@ -1,7 +1,7 @@
 #include <Game.h>
 
 int main() {
-	Game g;
+	minimaze::Game g;
 	g.run();
 	
 	return 0;

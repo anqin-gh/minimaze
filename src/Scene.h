@@ -5,6 +5,8 @@
 
 #include <GameObject.h>
 
+namespace minimaze {
+
 class MazeFactory;
 
 class Scene : public GameObject {
@@ -25,5 +27,7 @@ private:
 	std::vector<GameObject*>  				m_obj_vector; 		// vector with all the game object in the scene
 	std::vector<std::vector<GameObject*>>   m_world_matrix; 	// matrix representing the world, used for collisions
 };
+
+} // minimaze
 
 #endif // SCENE_H

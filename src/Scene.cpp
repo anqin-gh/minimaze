@@ -2,6 +2,8 @@
 
 #include <Scene.h>
 
+namespace minimaze {
+
 Scene::Scene(const MazeFactory& f)
 	: m_world_matrix{15, std::vector(std::vector(15, nullptr))}
 {
@@ -31,3 +33,5 @@ bool Scene::is_player() const { return false; }
 bool Scene::is_mortal() const { return false; }
 
 bool Scene::there_is_player() const { return m_is_there_player; }
+
+} // minimaze

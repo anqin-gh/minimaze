@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+namespace minimaze {
+
 class KeyManager;
 class Scene;
 
@@ -19,3 +21,5 @@ private:
 };
 
 #endif // GAME_H
+
+} // minimaze

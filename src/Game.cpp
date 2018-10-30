@@ -6,6 +6,8 @@
 #include <KeyManager.h>
 #include <Scene.h>
 
+namespace minimaze {
+
 Game::Game() 
 	: m_key_manager{&KeyManager.get_instance()}
 	, m_scene{new Scene()}
@@ -38,3 +40,5 @@ void Game::run() {
 	} while (	m_key_manager->get_next_key() != 'q'
 			 && m_scene->there_is_player());
 }
+
+} // minimaze
