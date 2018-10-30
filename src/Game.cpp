@@ -18,7 +18,8 @@ Game::~Game() {
 }
 
 void Game::update() {
-
+	m_key_manager->update();
+	m_scene->update();
 }
 
 void Game::draw() {
