@@ -14,7 +14,6 @@ public:
 	Scene(const MazeFactory& f);
 	~Scene();
 
-	void initialize();
 	void update() 			override;	
 	void draw()		 const 	override;
 	bool is_player() const 	override;
