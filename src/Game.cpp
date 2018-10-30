@@ -23,7 +23,7 @@ void Game::update() {
 }
 
 void Game::draw() {
-
+	m_scene->draw();
 }
 
 void Game::time_wait() {
