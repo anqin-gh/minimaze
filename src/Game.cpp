@@ -36,7 +36,3 @@ void Game::run() {
 		time_wait();
 	} while (m_key_manager->get_next_key() != 'q');
 }
-
-
-	KeyManager* m_key_manager;
-	Scene*		m_scene;
