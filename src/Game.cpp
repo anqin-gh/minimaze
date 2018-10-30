@@ -35,5 +35,6 @@ void Game::run() {
 		udpate();
 		draw();
 		time_wait();
-	} while (m_key_manager->get_next_key() != 'q');
+	} while (	m_key_manager->get_next_key() != 'q'
+			 && m_scene->there_is_player());
 }
