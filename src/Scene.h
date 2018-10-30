@@ -5,11 +5,14 @@
 
 #include <GameObject.h>
 
+class MazeFactory;
+
 class Scene : public GameObject {
 public:
-	Scene();
+	Scene(const MazeFactory& f);
 	~Scene();
 
+	void initialize();
 	void update() 			override;	
 	void draw()		 const 	override;
 	bool is_player() const 	override;
@@ -18,9 +21,9 @@ public:
 	bool there_is_player() const;
 
 private:
-	bool 					  m_is_there_player;
-	std::vector<GameObject*>  m_obj_vector; 	// vector with all the game object in the scene
-	std::vector<GameObject*>  m_world_matrix; 	// matrix representing the world, used for collisions
+	bool 					  				m_is_there_player;
+	std::vector<GameObject*>  				m_obj_vector; 		// vector with all the game object in the scene
+	std::vector<std::vector<GameObject*>>   m_world_matrix; 	// matrix representing the world, used for collisions
 };
 
 #endif // SCENE_H

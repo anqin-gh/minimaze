@@ -1,26 +1,33 @@
-#ifndef SCENE_H
-#define SCENE_H
-
 #include <vector>
 
-#include <GameObject.h>
+#include <Scene.h>
 
-class Scene : public GameObject {
-public:
-	Scene();
-	~Scene();
+Scene::Scene(const MazeFactory& f)
+	: m_world_matrix{15, std::vector(std::vector(15, nullptr))}
+{
+	// TODO: create enemies, walls, player & goal with the input factory
+}
 
-	void update() 			override;	
-	void draw()		 const 	override;
-	bool is_player() const 	override;
-	bool is_mortal() const 	override;
+Scene::~Scene() {
+	for (GameObject* o : m_obj_vector) {
+		//delete o;
+	}
+}
 
-	bool there_is_player() const;
+void Scene::update() {
+	for (GameObject* o : m_obj_vector) {
+		o->update();
+	}
+}
 
-private:
-	bool 					  m_is_there_player;
-	std::vector<GameObject*>  m_obj_vector; 	// vector with all the game object in the scene
-	std::vector<GameObject*>  m_world_matrix; 	// matrix representing the world, used for collisions
-};
+void Scene::draw() const {
+	for (GameObject* o : m_obj_vector) {
+		o->draw();
+	}
+}
 
-#endif // SCENE_H
+bool Scene::is_player() const { return false; }
+
+bool Scene::is_mortal() const { return false; }
+
+bool Scene::there_is_player() const { return m_is_there_player; }
