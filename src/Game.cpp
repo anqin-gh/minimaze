@@ -2,6 +2,8 @@
 #include <new>
 
 // custom includes
+#include <MazeFactory.h>
+#include <MazeFactoryEasy.h>
 #include <Game.h>
 #include <KeyManager.h>
 #include <Scene.h>
@@ -10,9 +12,10 @@ namespace minimaze {
 
 Game::Game() 
 	: m_key_manager{&KeyManager.get_instance()}
-	, m_scene{new Scene()}
+	, m_scene{nullptr}
 {
-
+	MazeFactoryEasy f;
+	m_scene = new Scene(15, f);
 }
 
 Game::~Game() {

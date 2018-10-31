@@ -13,6 +13,12 @@ public:
 	void set_location(int8_t x, int8_t y);
 	void set_next_movement(int8_t dx, int8_t dy);
 
+	int8_t 	get_x() 		const;
+	int8_t 	get_y() 		const;
+	int8_t 	get_next_x()	const;
+	int8_t 	get_next_y() 	const;
+	bool 	wants_to_move() const;
+
 	// abstract methods defining the interface
 	virtual void update() 				= 0;
 	virtual void draw() 		const 	= 0;

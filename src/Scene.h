@@ -11,8 +11,8 @@ class MazeFactory;
 
 class Scene : public GameObject {
 public:
-	Scene(const MazeFactory& f);
-	~Scene();
+	Scene(int8_t size, const MazeFactory& f);
+	~Scene() override;
 
 	void update() 			override;	
 	void draw()		 const 	override;
@@ -21,10 +21,15 @@ public:
 
 	bool there_is_player() const;
 
+	void add_object(GameObject* o);
+	void move_object(GameObject* o);
+	void remove_object(GameObject* o);
+
 private:
-	bool 					  				m_is_there_player;
-	std::vector<GameObject*>  				m_obj_vector; 		// vector with all the game object in the scene
+	int8_t									m_size;
 	std::vector<std::vector<GameObject*>>   m_world_matrix; 	// matrix representing the world, used for collisions
+	std::vector<GameObject*>  				m_obj_vector; 		// vector with all the game object in the scene
+	bool 					  				m_is_there_player;
 };
 
 } // minimaze
