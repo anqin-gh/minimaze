@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -26,8 +27,15 @@ Scene::~Scene() {
 }
 
 void Scene::update() {
-	for (GameObject* o : m_obj_vector) {
+	std::size_t size = m_obj_vector.size();
+	for (std::size_t i = 0; i < size; ++i) {
+		GameObject* o = m_obj_vector[i];
 		o->update();
+		move_object(o);
+		if (m_obj_vector.size() != size) {
+			size = m_obj_vector.size();
+			--i
+		}
 	}
 }
 
@@ -68,11 +76,45 @@ void Scene::add_object(GameObject* o) {
 }
 
 void Scene::move_object(GameObject* o) {
+	if (o->wants_to_move()) {
+		int8_t x  = o->get_x();
+		int8_t y  = o->get_y();
+		int8_t nx = o->get_next_x();
+		int8_t ny = o->get_next_y();
 
+		GameObject* o_dest = m_obj_vector[nx][ny];
+		if (o_dest == nullptr) {
+			m_obj_vector[nx][ny] = o;
+			m_obj_vector[x][y] = nullptr;
+		} else if (o_dest->is_mortal && o->is_player){
+			remove_object(o)
+		} else if (o_dest->is_player && o->is_mortal){
+			remove_object(o_dest)
+		} else {
+			nx = x;
+			ny = y;
+		}
+		o->set_location(nx, ny);
+	}
 }
 
 void Scene::remove_object(GameObject* o) {
+	auto it = std::find(m_obj_vector.begin(), m_obj_vector.end(), o);
+	if (it == m_obj_vector.end()) {
+		throw std::logic_error("Not found while removing object")
+	}
+	m_obj_vector.erase(it);
 
+	int8_t x = o->get_x();
+	int8_t y = o->get_y();
+	if (m_world_matrix[x][y] != o) {
+		throw std::logic_error("Not found in wold matrix")
+	}
+	m_world_matrix[x][y] = nullptr;
+	if (o->is_player) {
+		m_is_there_player = false;
+	}
+	delete o;
 }
 
 } // minimaze
