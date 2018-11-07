@@ -14,7 +14,7 @@ public:
 	void update();
 	void draw();
 	void run();
-	void time_Wait();
+	void time_wait();
 private:
 	KeyManager* m_key_manager;
 	Scene*		m_scene;

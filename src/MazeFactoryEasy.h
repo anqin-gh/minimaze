@@ -5,6 +5,11 @@
 
 namespace minimaze {
 
+class Player;
+class Enemy;
+class Wall;
+class Goal;
+
 class MazeFactoryEasy : public MazeFactory {
 public:
 	MazeFactoryEasy() = default;

@@ -2,7 +2,6 @@
 #include <new>
 
 // custom includes
-#include <MazeFactory.h>
 #include <MazeFactoryEasy.h>
 #include <Game.h>
 #include <KeyManager.h>
@@ -11,9 +10,11 @@
 namespace minimaze {
 
 Game::Game() 
-	: m_key_manager{&KeyManager.get_instance()}
+	: m_key_manager{&KeyManager::get_instance()}
 	, m_scene{nullptr}
 {
+	m_key_manager->clear();
+
 	MazeFactoryEasy f;
 	m_scene = new Scene(15, f);
 }
@@ -37,10 +38,10 @@ void Game::time_wait() {
 
 void Game::run() {
 	do {
-		udpate();
+		update();
 		draw();
 		time_wait();
-	} while (	m_key_manager->get_next_key() != 'q'
+	} while (	m_key_manager->get_last_key() != 'q'
 			 && m_scene->there_is_player());
 }
 
