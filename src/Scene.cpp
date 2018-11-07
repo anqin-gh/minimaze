@@ -16,13 +16,33 @@ Scene::Scene(int8_t size, const MazeFactory& f)
 	, m_world_matrix{m_size, std::vector(std::vector(m_size, nullptr))}
 {
 	// TODO: create enemies, walls, player & goal with the input factory
-	// Enemy* e1 = f.create_enemy(2, 4);
-	// add_object(e1);
+	auto border = m_size - 2;
+	for (auto i = 2; i < border; ++i) {
+		Wall* w1 = f.create_wall(i		, 1)
+		Wall* w4 = f.create_wall(i		, border)
+		Wall* w2 = f.create_wall(1		, i)
+		Wall* w3 = f.create_wall(border	, i)
+		add_object(w1);
+		add_object(w2);
+		add_object(w3);
+		add_object(w4);
+	}
+
+	Enemy* e1 = f.create_enemy(5, 4);
+	add_object(e1);	
+	Enemy* e2 = f.create_enemy(8, 10);
+	add_object(e2);
+
+	Player* p = f.create_player(2, 2)
+	add_object(p);
+
+	// Goal* g = f.create_goal(border, border);
+	// add_object(g);
 }
 
 Scene::~Scene() {
 	for (GameObject* o : m_obj_vector) {
-		//delete o;
+		delete o;
 	}
 }
 
