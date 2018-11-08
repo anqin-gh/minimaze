@@ -1,7 +1,5 @@
 #include <GameObject.h>
 
-GameObject::GameObject() { }
-
 void GameObject::set_location(int8_t x, int8_t y) {
 	m_x = x;
 	m_y = y;

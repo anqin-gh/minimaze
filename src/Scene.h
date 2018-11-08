@@ -12,7 +12,7 @@ class MazeFactory;
 class Scene : public GameObject {
 public:
 	Scene(int8_t size, const MazeFactory& f);
-	~Scene() override;
+	~Scene();
 
 	void update() 			override;	
 	void draw()		 const 	override;
@@ -21,9 +21,9 @@ public:
 
 	bool there_is_player() const;
 
-	void add_object(GameObject* o);
-	void move_object(GameObject* o);
-	void remove_object(GameObject* o);
+	void add_game_object(GameObject* o);
+	void move_object	(GameObject* o);
+	void remove_object	(GameObject* o);
 
 private:
 	int8_t									m_size;

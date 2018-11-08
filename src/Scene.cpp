@@ -1,9 +1,9 @@
 #include <algorithm>
 #include <stdexcept>
 #include <string>
-#include <vector>
 
 #include <Enemy.h>
+// #include <Goal.h>
 #include <MazeFactory.h>
 #include <Scene.h>
 #include <Player.h>
@@ -13,31 +13,32 @@ namespace minimaze {
 
 Scene::Scene(int8_t size, const MazeFactory& f)
 	: m_size{size}
-	, m_world_matrix{m_size, std::vector(std::vector(m_size, nullptr))}
+	, m_world_matrix(m_size, std::vector<GameObject*>(m_size, nullptr))
 {
 	// TODO: create enemies, walls, player & goal with the input factory
 	auto border = m_size - 2;
 	for (auto i = 2; i < border; ++i) {
-		Wall* w1 = f.create_wall(i		, 1)
-		Wall* w4 = f.create_wall(i		, border)
-		Wall* w2 = f.create_wall(1		, i)
-		Wall* w3 = f.create_wall(border	, i)
-		add_object(w1);
-		add_object(w2);
-		add_object(w3);
-		add_object(w4);
+		Wall* w1 = f.create_wall(i		, 1);
+		Wall* w4 = f.create_wall(i		, border);
+		Wall* w2 = f.create_wall(1		, i);
+		Wall* w3 = f.create_wall(border	, i);
+		add_game_object(w1);
+		add_game_object(w2);
+		add_game_object(w3);
+		add_game_object(w4);
 	}
 
 	Enemy* e1 = f.create_enemy(5, 4);
-	add_object(e1);	
+	add_game_object(e1);
 	Enemy* e2 = f.create_enemy(8, 10);
-	add_object(e2);
+	add_game_object(e2);
 
-	Player* p = f.create_player(2, 2)
-	add_object(p);
+	Player* p = f.create_player(2, 2);
+	add_game_object(p);
+	m_is_there_player = true;
 
 	// Goal* g = f.create_goal(border, border);
-	// add_object(g);
+	// add_game_object(g);
 }
 
 Scene::~Scene() {
@@ -54,7 +55,7 @@ void Scene::update() {
 		move_object(o);
 		if (m_obj_vector.size() != size) {
 			size = m_obj_vector.size();
-			--i
+			--i;
 		}
 	}
 }
@@ -71,7 +72,7 @@ bool Scene::is_mortal() const { return false; }
 
 bool Scene::there_is_player() const { return m_is_there_player; }
 
-void Scene::add_object(GameObject* o) {
+void Scene::add_game_object(GameObject* o) {
 	// check for nullptr
 	if (!o) {
 		throw std::invalid_argument("Invalid Object");
@@ -81,14 +82,14 @@ void Scene::add_object(GameObject* o) {
 	int8_t y = o->get_y();
 	if (x > m_size - 1 || y > m_size - 1) {
 		throw std::out_of_range("Out of world matrix ("
-			+ std::to_string(x) + x + ", "
-			+ std::to_string(y) + y + ")");
+			+ std::to_string(x) + ", "
+			+ std::to_string(y) + ")");
 	}
 	// check whether position is available in world matrix
 	if (m_world_matrix[x][y]) {
 		throw std::logic_error("Existing object at position ("
-			+ std::to_string(x) + x + ", "
-			+ std::to_string(y) + y + ") of world matrix");
+			+ std::to_string(x) + ", "
+			+ std::to_string(y) + ") of world matrix");
 	}
 
 	m_world_matrix[x][y] = o;
@@ -102,14 +103,14 @@ void Scene::move_object(GameObject* o) {
 		int8_t nx = o->get_next_x();
 		int8_t ny = o->get_next_y();
 
-		GameObject* o_dest = m_obj_vector[nx][ny];
+		GameObject* o_dest = m_world_matrix[nx][ny];
 		if (o_dest == nullptr) {
-			m_obj_vector[nx][ny] = o;
-			m_obj_vector[x][y] = nullptr;
-		} else if (o_dest->is_mortal && o->is_player){
-			remove_object(o)
-		} else if (o_dest->is_player && o->is_mortal){
-			remove_object(o_dest)
+			m_world_matrix[nx][ny] = o;
+			m_world_matrix[x][y] = nullptr;
+		} else if (o_dest->is_mortal() && o->is_player()) {
+			remove_object(o);
+		} else if (o_dest->is_player() && o->is_mortal()) {
+			remove_object(o_dest);
 		} else {
 			nx = x;
 			ny = y;
@@ -121,17 +122,17 @@ void Scene::move_object(GameObject* o) {
 void Scene::remove_object(GameObject* o) {
 	auto it = std::find(m_obj_vector.begin(), m_obj_vector.end(), o);
 	if (it == m_obj_vector.end()) {
-		throw std::logic_error("Not found while removing object")
+		throw std::logic_error("Not found while removing object");
 	}
 	m_obj_vector.erase(it);
 
 	int8_t x = o->get_x();
 	int8_t y = o->get_y();
 	if (m_world_matrix[x][y] != o) {
-		throw std::logic_error("Not found in wold matrix")
+		throw std::logic_error("Not found in wold matrix");
 	}
 	m_world_matrix[x][y] = nullptr;
-	if (o->is_player) {
+	if (o->is_player()) {
 		m_is_there_player = false;
 	}
 	delete o;

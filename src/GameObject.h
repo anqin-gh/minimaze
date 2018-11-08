@@ -7,7 +7,7 @@
 // (player, enemies, walls, scene & goal)
 class GameObject {
 public:
-	GameObject();
+	GameObject() = default;
 	virtual ~GameObject() = default;
 
 	void set_location(int8_t x, int8_t y);
@@ -25,7 +25,7 @@ public:
 	virtual bool is_player() 	const 	= 0;
 	virtual bool is_mortal() 	const 	= 0;
 
-private:
+protected:
 	int8_t 	m_x, m_y;			// current location
 	int8_t 	m_nx, m_ny; 		// desired movement
 	bool 	m_wants_to_move;	// flag to know whether the object wants to move

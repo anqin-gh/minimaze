@@ -8,11 +8,11 @@ KeyManager& KeyManager::get_instance() {
 	return instance;
 }
 
-void update() {
+void KeyManager::update() {
 	m_last_key_pressed = STDP::ObtenTecla();
 }
 
-char get_last_key() const{
+char KeyManager::get_last_key() const{
 	return m_last_key_pressed;
 }
 
@@ -23,7 +23,7 @@ char get_last_key() const{
 // 	} while (m_last_key_pressed == -1);
 // }
 
-void clear() const{
+void KeyManager::clear() const{
 	while(STDP::ObtenTecla() > -1);
 }
 

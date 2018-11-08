@@ -3,20 +3,26 @@
 
 #include <GameObject.h>
 
+namespace minimaze {
+
+class KeyManager;
+
 class Player : public GameObject {
 public:
 	Player();
-	virtual ~Player() = default;
+	~Player() = default;
 
 	// abstract methods defining the interface
-	virtual void update() 		 		override;
-	virtual void draw() 		const 	override;
-	virtual bool is_player() 	const 	override;
-	virtual bool is_mortal() 	const 	override;
+	void update() 		 		override;
+	void draw() 		const 	override;
+	bool is_player() 	const 	override;
+	bool is_mortal() 	const 	override;
 
 private:
 	KeyManager* m_key_manager;
-	// RendererManager* m_rend_manager;
+	RendererManager* m_rend_manager;
 };
+
+} // minimaze
 
 #endif // PLAYER_H
