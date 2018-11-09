@@ -1,5 +1,6 @@
 #include <new>
 
+#include <Renderer.h>
 #include <RendManager.h>
 #include <RendSTDP.h>
 #include <RendSTDP2.h>
@@ -11,6 +12,10 @@ RendManager::RendManager()
 	, m_selected{TRenderer::STDP}
 {
 
+}
+
+RendManager::~RendManager() {
+	delete m_rend;
 }
 
 RendManager& RendManager::get_instance() {

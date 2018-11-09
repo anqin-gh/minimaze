@@ -8,7 +8,7 @@ class Renderer;
 
 class RendManager {
 public:
-	~RendManager() = default;
+	~RendManager();
 	RendManager(const RendManager&) = delete;
 	RendManager& operator=(const RendManager&) = delete;
 
