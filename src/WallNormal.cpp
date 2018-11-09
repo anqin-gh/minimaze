@@ -6,7 +6,7 @@
 
 namespace minimaze {
 
-WallNormal::WallNormal() {}
+WallNormal::WallNormal() : m_rend_manager{&RendManager::get_instance()} {}
 
 void WallNormal::update() {}
 
