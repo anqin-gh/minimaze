@@ -8,7 +8,7 @@ namespace minimaze {
 class Enemy : public GameObject {
 public:
 	Enemy() = default;
-	virtual ~Enemy() = default;
+	virtual ~Enemy() override = default;
 
 	// abstract methods defining the interface
 	virtual void update() override = 0;

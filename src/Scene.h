@@ -12,7 +12,7 @@ class MazeFactory;
 class Scene : public GameObject {
 public:
 	Scene(int8_t size, const MazeFactory& f);
-	~Scene();
+	~Scene() override;
 
 	void update() 			override;	
 	void draw()		 const 	override;

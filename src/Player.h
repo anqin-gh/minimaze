@@ -11,7 +11,7 @@ class RendManager;
 class Player : public GameObject {
 public:
 	Player();
-	~Player() = default;
+	~Player() override = default;
 
 	// abstract methods defining the interface
 	void update() 		 		override;

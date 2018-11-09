@@ -8,7 +8,7 @@ namespace minimaze {
 class RendSTDP : public Renderer {
 public:
 	RendSTDP();
-	~RendSTDP();
+	~RendSTDP() override;
 
 	void clear_screen() const override;
 	void refresh() 		const override;

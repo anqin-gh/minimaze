@@ -10,7 +10,7 @@ class RendManager;
 class EnemyLR : public Enemy {
 public:
 	EnemyLR();
-	~EnemyLR() = default;
+	~EnemyLR() override = default;
 
 	// abstract methods defining the interface
 	void update() override;	

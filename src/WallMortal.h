@@ -10,7 +10,7 @@ class RendManager;
 class WallMortal : public Wall {
 public:
 	WallMortal() = default;
-	~WallMortal() = default;
+	~WallMortal() override = default;
 
 	// abstract methods defining the interface
 	void update() override;
