@@ -1,5 +1,8 @@
 #include <EnemyLR.h>
+#include <Renderer.h>
 #include <RendManager.h>
+#include <RendSTDP.h>
+#include <RendSTDP2.h>
 
 namespace minimaze {
 
@@ -11,7 +14,7 @@ void EnemyLR::update() {
 }
 
 void EnemyLR::draw() const {
-
+	m_rend_manager->renderer().draw_enemy_lr(m_x, m_y);
 }
 
 } // minimaze

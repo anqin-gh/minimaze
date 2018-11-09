@@ -5,7 +5,7 @@
 
 namespace minimaze {
 
-// class RendManager;
+class RendManager;
 
 class EnemyLR : public Enemy {
 public:

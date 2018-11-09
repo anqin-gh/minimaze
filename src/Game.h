@@ -4,6 +4,7 @@
 namespace minimaze {
 
 class KeyManager;
+class RendManager;
 class Scene;
 
 class Game {
@@ -17,6 +18,7 @@ public:
 	void time_wait();
 private:
 	KeyManager* m_key_manager;
+	RendManager* m_rend_manager;
 	Scene*		m_scene;
 };
 

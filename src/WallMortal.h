@@ -5,6 +5,8 @@
 
 namespace minimaze {
 
+class RendManager;
+
 class WallMortal : public Wall {
 public:
 	WallMortal() = default;
@@ -15,6 +17,8 @@ public:
 	
 	void draw() 		const override;
 	bool is_mortal() 	const override;
+private:
+	RendManager* m_rend_manager;
 };
 
 } // minimaze

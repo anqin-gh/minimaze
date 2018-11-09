@@ -6,6 +6,7 @@
 namespace minimaze {
 
 class KeyManager;
+class RendManager;
 
 class Player : public GameObject {
 public:
@@ -20,7 +21,7 @@ public:
 
 private:
 	KeyManager* m_key_manager;
-	RendererManager* m_rend_manager;
+	RendManager* m_rend_manager;
 };
 
 } // minimaze

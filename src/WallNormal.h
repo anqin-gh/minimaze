@@ -5,9 +5,11 @@
 
 namespace minimaze {
 
+class RendManager;
+
 class WallNormal : public Wall {
 public:
-	WallNormal() = default;
+	WallNormal();
 	~WallNormal() = default;
 
 	// abstract methods defining the interface
@@ -15,6 +17,8 @@ public:
 	
 	void draw() 	 const override;
 	bool is_mortal() const override;
+private:
+	RendManager* m_rend_manager;
 };
 
 } // minimaze
