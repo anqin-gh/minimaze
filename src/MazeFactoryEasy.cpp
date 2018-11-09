@@ -1,7 +1,7 @@
 #include <new>
 
 #include <EnemyLR.h>
-// #include <Goal.h>
+#include <Goal.h>
 #include <MazeFactoryEasy.h>
 #include <Player.h>
 #include <WallNormal.h>
@@ -26,10 +26,10 @@ Wall* MazeFactoryEasy::create_wall(int8_t x, int8_t y) const {
 	return w;
 }
 
-// Goal* MazeFactoryEasy::create_goal(int8_t x, int8_t y) const {
-// 	Goal* g = new Goal();
-// 	g->set_location(x, y);
-// 	return g;
-// }
+Goal* MazeFactoryEasy::create_goal(int8_t x, int8_t y) const {
+	Goal* g = new Goal();
+	g->set_location(x, y);
+	return g;
+}
 
 } // minimaze

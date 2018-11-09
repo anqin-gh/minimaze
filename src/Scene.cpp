@@ -3,7 +3,7 @@
 #include <string>
 
 #include <Enemy.h>
-// #include <Goal.h>
+#include <Goal.h>
 #include <MazeFactory.h>
 #include <Scene.h>
 #include <Player.h>
@@ -37,8 +37,8 @@ Scene::Scene(int8_t size, const MazeFactory& f)
 	add_game_object(p);
 	m_is_there_player = true;
 
-	// Goal* g = f.create_goal(border, border);
-	// add_game_object(g);
+	Goal* g = f.create_goal(border, border);
+	add_game_object(g);
 }
 
 Scene::~Scene() {
