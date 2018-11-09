@@ -43,7 +43,7 @@ void Game::run() {
 		update();
 		draw();
 		time_wait();
-		if (m_key_manager->get_last_key == 'r') {
+		if (m_key_manager->get_last_key() == 'r') {
 			m_rend_manager->switch_renderer();
 		}
 	} while (	m_key_manager->get_last_key() != 'q'

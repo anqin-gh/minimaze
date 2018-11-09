@@ -37,7 +37,7 @@ void RendManager::switch_renderer() {
 		}
 		case TRenderer::STDP2 : {
 			m_rend = new RendSTDP();
-			m_selected = TRenderer::RendSTDP;
+			m_selected = TRenderer::STDP;
 			break;
 		}
 	}

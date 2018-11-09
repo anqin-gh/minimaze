@@ -1,12 +1,15 @@
 #include <EnemyLR.h>
 #include <Renderer.h>
 #include <RendManager.h>
-#include <RendSTDP.h>
-#include <RendSTDP2.h>
 
 namespace minimaze {
 
-EnemyLR::EnemyLR() : m_dir{1} {}
+EnemyLR::EnemyLR()
+	: m_dir{1}
+	, m_rend_manager{&RendManager::get_instance()}
+{
+
+}
 
 void EnemyLR::update() {
 	if (m_x != m_nx) m_dir = -m_dir;
