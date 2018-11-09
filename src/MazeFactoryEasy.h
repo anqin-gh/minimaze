@@ -15,10 +15,10 @@ public:
 	MazeFactoryEasy() = default;
 	virtual ~MazeFactoryEasy() override = default;
 
-	Player*	create_player(int8_t x, int8_t y)	const override;
-	Enemy*	create_enemy(int8_t x, int8_t y)	const override;
-	Wall*	create_wall(int8_t x, int8_t y)		const override;
-	Goal*	create_goal(int8_t x, int8_t y)		const override;
+	Player*	create_player	(int8_t x, int8_t y) const override;
+	Enemy*	create_enemy	(int8_t x, int8_t y) const override;
+	Wall*	create_wall		(int8_t x, int8_t y) const override;
+	Goal*	create_goal		(int8_t x, int8_t y) const override;
 };
 
 } // minimaze
