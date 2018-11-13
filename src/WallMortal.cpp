@@ -6,6 +6,8 @@
 
 namespace minimaze {
 
+WallMortal::WallMortal() : m_rend_manager{&RendManager::get_instance()} {}
+
 void WallMortal::update() {}
 
 void WallMortal::draw() const {m_rend_manager->renderer().draw_wall_mortal(m_x, m_y);}

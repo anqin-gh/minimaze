@@ -9,14 +9,14 @@ class RendManager;
 
 class WallMortal : public Wall {
 public:
-	WallMortal() = default;
+	WallMortal();
 	~WallMortal() override = default;
 
 	// abstract methods defining the interface
 	void update() override;
 	
-	void draw() 		const override;
-	bool is_mortal() 	const override;
+	void draw()			const override;
+	bool is_mortal()	const override;
 private:
 	RendManager* m_rend_manager;
 };
