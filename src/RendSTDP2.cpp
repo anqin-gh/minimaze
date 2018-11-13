@@ -45,6 +45,14 @@ void RendSTDP2::draw_enemy_wandering(int8_t x, int8_t y) const {
 	STDP::sout << "WW";
 }
 
+void RendSTDP2::draw_enemy_chasing(int8_t x, int8_t y) const {
+	STDP::CambiaColor(A_BOLD, STDP_C_ROJO, STDP_C_NEGRO);
+	STDP::PonCursor(2*x, 2*y);
+	STDP::sout << "CC";
+	STDP::PonCursor(2*x, 2*y+1);
+	STDP::sout << "CC";
+}
+
 void RendSTDP2::draw_wall_normal(int8_t x, int8_t y) const {
 	STDP::CambiaColor(A_BOLD, STDP_C_VERDE, STDP_C_NEGRO);
 	STDP::PonCursor(2*x, 2*y);
