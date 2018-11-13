@@ -1,5 +1,6 @@
 // standard includes
 #include <new>
+#include <thread>
 
 // custom includes
 #include <MazeFactoryEasy.h>
@@ -38,7 +39,16 @@ void Game::draw() {
 }
 
 void Game::time_wait() {
+	using clock = std::chrono::system_clock;
+	using namespace std::chrono_literals;
 
+	constexpr auto fps = 20.0f;
+	constexpr auto spf = 1.0s / fps;
+	auto t = clock::now();
+
+	auto passed = clock::now() - t;
+	if (passed < spf)
+		std::this_thread::sleep_for(spf - passed);
 }
 
 void Game::run() {
