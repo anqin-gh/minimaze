@@ -8,7 +8,7 @@ namespace minimaze {
 class Wall : public GameObject {
 public:
 	Wall() = default;
-	virtual ~Wall() override  = default;
+	virtual ~Wall() override = default;
 
 	// abstract methods defining the interface
 	virtual void update() override = 0;
