@@ -6,6 +6,7 @@
 #include <Game.h>
 #include <KeyManager.h>
 #include <RendManager.h>
+#include <Renderer.h>
 #include <Scene.h>
 
 namespace minimaze {
@@ -31,11 +32,13 @@ void Game::update() {
 }
 
 void Game::draw() {
+	m_rend_manager->renderer().clear_screen();
 	m_scene->draw();
+	m_rend_manager->renderer().refresh();
 }
 
 void Game::time_wait() {
-	
+
 }
 
 void Game::run() {
