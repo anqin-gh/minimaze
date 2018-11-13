@@ -26,9 +26,9 @@ public:
 	virtual bool is_mortal() 	const 	= 0;
 
 protected:
-	int8_t 	m_x, m_y;			// current location
-	int8_t 	m_nx, m_ny; 		// desired movement
-	bool 	m_wants_to_move;	// flag to know whether the object wants to move
+	int8_t 	m_x{0}, m_y{0};			// current location
+	int8_t 	m_nx{0}, m_ny{0}; 		// desired movement
+	bool 	m_wants_to_move{false};	// flag to know whether the object wants to move
 };
 
 #endif // GAMEOBJECT_H
