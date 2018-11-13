@@ -17,6 +17,7 @@ public:
 	virtual bool is_mortal() 	const override = 0;
 
 	bool is_player() const override {return false;}
+	bool is_goal()	 const override {return false;}
 };
 
 } // minimaze

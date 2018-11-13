@@ -24,6 +24,7 @@ public:
 	virtual void draw() 		const 	= 0;
 	virtual bool is_player() 	const 	= 0;
 	virtual bool is_mortal() 	const 	= 0;
+	virtual bool is_goal() 		const 	= 0;
 
 protected:
 	int8_t 	m_x{0}, m_y{0};			// current location

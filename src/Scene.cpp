@@ -72,6 +72,8 @@ bool Scene::is_player() const { return false; }
 
 bool Scene::is_mortal() const { return false; }
 
+bool Scene::is_goal() const { return false; }
+
 bool Scene::there_is_player() const { return m_is_there_player; }
 
 void Scene::add_game_object(GameObject* o) {
@@ -114,6 +116,9 @@ void Scene::move_object(GameObject* o) {
 			return;
 		} else if (o_dest->is_player() && o->is_mortal()) {
 			remove_object(o_dest);
+			return;
+		} else if (o_dest->is_goal() && o->is_player()) {
+			// TODO: add logic to terminate the game or to launch next scene
 			return;
 		} else {
 			nx = x;

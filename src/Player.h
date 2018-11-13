@@ -18,6 +18,7 @@ public:
 	void draw() 		const 	override;
 	bool is_player() 	const 	override;
 	bool is_mortal() 	const 	override;
+	bool is_goal()	 	const 	override;
 
 private:
 	KeyManager* m_key_manager;

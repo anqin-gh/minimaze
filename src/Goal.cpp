@@ -14,4 +14,6 @@ bool Goal::is_player() const {return false;}
 
 bool Goal::is_mortal() const {return false;}
 
+bool Goal::is_goal() const {return true;}
+
 } // minimaze
