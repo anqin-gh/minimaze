@@ -19,9 +19,9 @@ public:
 	void run();
 	void time_wait();
 private:
-	KeyManager* m_key_manager;
-	RendManager* m_rend_manager;
-	Scene*		m_scene;
+	KeyManager* 	m_key_manager;
+	RendManager* 	m_rend_manager;
+	Scene*			m_scene;
 };
 
 } // minimaze
