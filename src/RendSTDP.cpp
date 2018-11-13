@@ -21,7 +21,6 @@ void RendSTDP::refresh() const {
 	STDP::Refrescar();
 }
 
-
 void RendSTDP::draw_player(int8_t x, int8_t y) const {
 	STDP::CambiaColor(A_BOLD, STDP_C_VERDE, STDP_C_NEGRO);
 	STDP::PonCursor(x, y);
@@ -34,7 +33,7 @@ void RendSTDP::draw_enemy_lr(int8_t x, int8_t y) const {
 	STDP::sout << "E";
 }
 
-void RendSTDP::draw_enemy_wander(int8_t x, int8_t y) const {
+void RendSTDP::draw_enemy_wandering(int8_t x, int8_t y) const {
 	STDP::CambiaColor(A_BOLD, STDP_C_ROJO, STDP_C_NEGRO);
 	STDP::PonCursor(x, y);
 	STDP::sout << "W";
