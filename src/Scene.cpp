@@ -46,6 +46,7 @@ Scene::~Scene() {
 	for (GameObject* o : m_obj_vector) {
 		delete o;
 	}
+	m_obj_vector.clear();
 }
 
 void Scene::update() {
@@ -106,12 +107,14 @@ void Scene::move_object(GameObject* o) {
 
 		GameObject* o_dest = m_world_matrix[nx][ny];
 		if (o_dest == nullptr) {
-			m_world_matrix[nx][ny] = o;
 			m_world_matrix[x][y] = nullptr;
+			m_world_matrix[nx][ny] = o;
 		} else if (o_dest->is_mortal() && o->is_player()) {
 			remove_object(o);
+			return;
 		} else if (o_dest->is_player() && o->is_mortal()) {
 			remove_object(o_dest);
+			return;
 		} else {
 			nx = x;
 			ny = y;
