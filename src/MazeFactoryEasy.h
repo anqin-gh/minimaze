@@ -13,7 +13,7 @@ class Goal;
 class MazeFactoryEasy : public MazeFactory {
 public:
 	MazeFactoryEasy() = default;
-	virtual ~MazeFactoryEasy() override = default;
+	~MazeFactoryEasy() override = default;
 
 	Player*	create_player	(int8_t x, int8_t y) const override;
 	Enemy*	create_enemy	(int8_t x, int8_t y) const override;
