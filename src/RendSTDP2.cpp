@@ -77,4 +77,16 @@ void RendSTDP2::draw_goal(int8_t x, int8_t y) const {
 	STDP::sout << "@@";
 }
 
+void RendSTDP2::draw_win(int8_t x, int8_t y) const {
+	STDP::CambiaColor(A_BOLD, STDP_C_BLANCO, STDP_C_VERDE);
+	STDP::PonCursor(2*x, 2*y);
+	STDP::sout << "YOU WIN!";
+}
+
+void RendSTDP2::draw_game_over(int8_t x, int8_t y) const {
+	STDP::CambiaColor(A_BOLD, STDP_C_AMARILLO, STDP_C_ROJO);
+	STDP::PonCursor(2*x, 2*y);
+	STDP::sout << "GAME OVER";
+}
+
 } // minimaze

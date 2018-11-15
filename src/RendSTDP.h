@@ -20,6 +20,8 @@ public:
 	void draw_wall_normal		(int8_t x, int8_t y) const override;
 	void draw_wall_mortal		(int8_t x, int8_t y) const override;
 	void draw_goal				(int8_t x, int8_t y) const override;
+	void draw_win				(int8_t x, int8_t y) const override;
+	void draw_game_over			(int8_t x, int8_t y) const override;
 };
 
 } // minimaze
