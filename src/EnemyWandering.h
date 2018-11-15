@@ -1,5 +1,7 @@
-#ifndef ENEMYCHASING_H
-#define ENEMYCHASING_H
+#ifndef ENEMYWANDERING_H
+#define ENEMYWANDERING_H
+
+#include <vector>
 
 #include <Enemy.h>
 
@@ -17,10 +19,19 @@ public:
 	void draw() const override;
 
 private:
-	int8_t m_dir;
-	RendManager* m_rend_manager;
+	struct MoveDir { int8_t dx, dy, steps; };
+
+	std::vector<MoveDir>	m_dirs{4}; 	// vector of directions
+	int8_t					m_di{0};	// direction index
+	int8_t					m_step{0};	// current step
+	RendManager* 			m_rend_manager{nullptr};
+
+	void init();
+	int8_t steps_left_in_current_direction() const;
+	void move_one_step_in_current_direction();
+	void change_direction();
 };
 
 } // minimaze
 
-#endif // ENEMYCHASING_H
+#endif // ENEMYWANDERING_H

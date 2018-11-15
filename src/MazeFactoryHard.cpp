@@ -1,6 +1,7 @@
 #include <new>
 
 #include <EnemyChasing.h>
+#include <EnemyWandering.h>
 #include <Goal.h>
 #include <MazeFactoryHard.h>
 #include <Player.h>
@@ -15,7 +16,7 @@ Player* MazeFactoryHard::create_player(int8_t x, int8_t y) const {
 }
 
 Enemy* MazeFactoryHard::create_enemy(int8_t x, int8_t y) const {
-	Enemy* e = new EnemyChasing();
+	Enemy* e = new EnemyWandering();
 	e->set_location(x, y);
 	return e;
 }
