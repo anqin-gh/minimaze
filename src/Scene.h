@@ -11,7 +11,7 @@ class MazeFactory;
 
 class Scene : public GameObject {
 public:
-	Scene(std::size_t size, const MazeFactory* f);
+	Scene(int8_t size, const MazeFactory* f);
 	~Scene() override;
 
 	void update() 			override;	
@@ -27,10 +27,10 @@ public:
 	void move_object	(GameObject* o);
 	void remove_object	(GameObject* o);
 
-	std::size_t get_size() const;
+	int8_t get_size() const;
 
 private:
-	std::size_t								m_size;
+	int8_t								m_size;
 	std::vector<std::vector<GameObject*>>   m_world_matrix; 	// matrix representing the world, used for collisions
 	std::vector<GameObject*>  				m_obj_vector; 		// vector with all the game object in the scene
 	bool 					  				m_is_there_player;

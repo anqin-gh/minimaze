@@ -11,13 +11,13 @@
 
 namespace minimaze {
 
-Scene::Scene(std::size_t size, const MazeFactory* f)
+Scene::Scene(int8_t size, const MazeFactory* f)
 	: m_size{size}
 	, m_world_matrix(m_size, std::vector<GameObject*>(m_size, nullptr))
 {
 	// TODO: create enemies, walls, player & goal with the input factory
-	std::size_t border = m_size - 1;
-	for (std::size_t i = 2; i < border; ++i) {
+	int8_t border = m_size - 1;
+	for (int8_t i = 2; i < border; ++i) {
 		Wall* w1 = f->create_wall(i		, 1);
 		Wall* w2 = f->create_wall(1		, i);
 		Wall* w3 = f->create_wall(border	, i);
@@ -50,12 +50,12 @@ Scene::~Scene() {
 }
 
 void Scene::update() {
-	std::size_t size = m_obj_vector.size();
-	for (std::size_t i = 0; i < size; ++i) {
+	int8_t size = m_obj_vector.size();
+	for (int8_t i = 0; i < size; ++i) {
 		GameObject* o = m_obj_vector[i];
 		o->update();
 		move_object(o);
-		if (m_obj_vector.size() != size) {
+		if (static_cast<int8_t>(m_obj_vector.size()) != size) {
 			size = m_obj_vector.size();
 			--i;
 		}
@@ -78,7 +78,7 @@ bool Scene::there_is_player() const { return m_is_there_player; }
 
 bool Scene::reached_goal() const { return m_reached_goal; }
 
-std::size_t Scene::get_size() const { return m_size; }
+int8_t Scene::get_size() const { return m_size; }
 
 void Scene::add_game_object(GameObject* o) {
 	// check for nullptr
