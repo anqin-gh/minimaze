@@ -17,10 +17,7 @@ public:
 	Game& operator=(const Game&) = delete;
 	~Game();
 
-	void update();
-	void draw();
 	void run();
-	void time_wait();
 private:
 	KeyManager* 				m_key_manager;
 	RendManager* 				m_rend_manager;
@@ -28,7 +25,10 @@ private:
 	std::size_t				 	m_factory_index;
 	Scene*						m_scene;
 	bool						m_reached_last_goal;
-
+	
+	void update();
+	void draw();
+	void time_wait();
 };
 
 } // minimaze
